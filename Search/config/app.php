@@ -165,7 +165,13 @@ return [
          * Service Provider Forms & HTML
          */
 
-        Collective\Html\HtmlServiceProvider::class
+        Collective\Html\HtmlServiceProvider::class,
+
+        /*
+         * Service Provider Guzzle
+         */
+
+        Kozz\Laravel\Providers\Guzzle::class
 
     ],
 
@@ -215,6 +221,7 @@ return [
         'MaterializeCSS' => Skydiver\LaravelMaterializeCSS\MaterializeCSS::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Guzzle' => Kozz\Laravel\Facades\Guzzle::class
 
     ],
 

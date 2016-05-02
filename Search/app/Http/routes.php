@@ -15,8 +15,11 @@ Route::get('/', function () {
     Form::macro('materializeSubmit',function($value){
         echo
             '<button class="btn waves-effect waves-light" type="submit" name="action">
-                '.$value.'<i class="material-icons right">send</i>
+                '.$value.'{{d}}<i class="material-icons right">send</i>
             </button>';
     });
+
     return view('ViewOntologyMatching');
 });
+
+Route::post('/requestMatching','RequestMatching@RequestMatching');

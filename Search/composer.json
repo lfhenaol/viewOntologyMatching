@@ -15,7 +15,9 @@
         "symfony/css-selector": "2.8.*|3.0.*",
         "symfony/dom-crawler": "2.8.*|3.0.*",
         "skydiver/laravel-materialize-css": "dev-master",
-        "laravelcollective/html": "5.2.*"
+        "laravelcollective/html": "5.2.*",
+        "kozz/laravel-guzzle-provider": "~6.0",
+        "symfony/psr-http-message-bridge": "0.2"
     },
     "autoload": {
         "classmap": [
