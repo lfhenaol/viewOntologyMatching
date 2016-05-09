@@ -2,61 +2,64 @@ app.controller('collect',['$scope','$http',function($scope,$http) {
     $scope.LOM = "";
     $scope.addElementsLOM = function(){
         $scope.LOM = {
+            "nameMatchOnto":$scope.nameMatchOnto,
+            "externEndpURL":$scope.externEndpURL,
+            "uriGraph":$scope.uriGraph,
             "lom": [
             {
                 "general": {
-                    "Identifier": {
-                        "catalog":$scope.catalog || false,
-                        "entry": $scope.entry || false
+                    "identifier": {
+                        "catalog":$scope.catalog + "",
+                        "entry": $scope.entry + ""
                     },
-                    "title": $scope.title || false,
-                    "language": $scope.language || false,
-                    "description": $scope.description || false,
-                    "keyword": $scope.keywordG || false,
-                    "coverage": $scope.coverage || false,
-                    "structure": $scope.structure || false,
-                    "aggregationLevel": $scope.aggregationLevel || false
+                    "title": $scope.title + "",
+                    "language": $scope.language + "",
+                    "description": $scope.description + "",
+                    "keyword": $scope.keywordG + "",
+                    "coverage": $scope.coverage + "",
+                    "structure": $scope.structure + "",
+                    "aggregationLevel": $scope.aggregationLevel + ""
                 },
                 "technical": {
                     "requirement": {
                         "orComposite": {
-                            "type": $scope.type || false,
-                            "name": $scope.name || false,
-                            "minimumVersion": $scope.minVersion || false,
-                            "maximumVersion": $scope.maxVersion || false
+                            "type": $scope.type + "",
+                            "name": $scope.name + "",
+                            "minimumVersion": $scope.minVersion + "",
+                            "maximumVersion": $scope.maxVersion + ""
                         }
                     },
-                    "format": $scope.format || false,
-                    "size": $scope.size || false,
-                    "location": $scope.location || false,
-                    "installationRemarks": $scope.installationRemarks || false,
-                    "otherPlatformRequirements": $scope.otherPlatformRequirements || false,
-                    "duration": $scope.duration || false
+                    "format": $scope.format + "",
+                    "size": $scope.size + "",
+                    "location": $scope.location + "",
+                    "installationRemarks": $scope.installationRemarks + "",
+                    "otherPlatformRequirements": $scope.otherPlatformRequirements + "",
+                    "duration": $scope.duration + ""
                 },
                 "educational": {
-                    "interactivityType": $scope.interactivityType || false,
-                    "learningResourceType": $scope.learningResourceType || false,
-                    "interactivityLevel": $scope.interactivityLevel || false,
-                    "semanticDensity": $scope.semanticDensity || false,
-                    "intendedEndUserRole": $scope.intendedEndUserRole || false,
-                    "context": $scope.context || false,
-                    "typicalAgeRange": $scope.typicalAgeRange || false,
-                    "difficulty": $scope.difficulty || false,
-                    "typicalLearningTime": $scope.typicalLearningTime || false,
-                    "description": $scope.descriptionE || false,
-                    "language": $scope.languageE || false
+                    "interactivityType": $scope.interactivityType + "",
+                    "learningResourceType": $scope.learningResourceType + "",
+                    "interactivityLevel": $scope.interactivityLevel + "",
+                    "semanticDensity": $scope.semanticDensity + "",
+                    "intendedEndUserRole": $scope.intendedEndUserRole + "",
+                    "context": $scope.context + "",
+                    "typicalAgeRange": $scope.typicalAgeRange + "",
+                    "difficulty": $scope.difficulty + "",
+                    "typicalLearningTime": $scope.typicalLearningTime + "",
+                    "description": $scope.descriptionE + "",
+                    "language": $scope.languageE + ""
                 },
                 "classification": {
                     "taxonPath": {
                         "taxon": {
-                            "id": $scope.id || false,
-                            "entry": $scope.entryC || false
+                            "id": $scope.id + "",
+                            "entry": $scope.entryC + ""
                         },
-                        "source": $scope.source || false
+                        "source": $scope.source + ""
                     },
-                    "purpose": $scope.purpose || false,
-                    "description": $scope.descriptionC || false,
-                    "keyword": $scope.keyword || false
+                    "purpose": $scope.purpose + "",
+                    "description": $scope.descriptionC + "",
+                    "keyword": $scope.keyword + ""
                 }
             }
         ]
