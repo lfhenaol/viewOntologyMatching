@@ -6,6 +6,15 @@
     <?php echo MaterializeCSS::include_full() ?>
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="<?php echo URL::to('/js/shared/angular.min.js') ?>"></script>
+    <style>
+        table.results.striped th, td {
+            padding: 15px 15px;
+        }
+
+        .collection .collection-item {
+            background-color: #22A498;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -121,11 +130,11 @@
                                                                         <?php echo Form::label('name','Name',array('style'=>'color:black')) ?>
                                                                         <br><br>
                                                                         <?php echo Form::checkbox('minVersion','true',false,array('id'=>'minVersion','ng-model'=>'minVersion',
-                                                                            'ng-true-value'=>"'http://www.semanticweb.org/jenny/ontologies/2015/10/untitled-ontology-113#maxversion'",'ng-false-value'=>"")) ?>
+                                                                            'ng-true-value'=>"'http://www.semanticweb.org/jenny/ontologies/2015/10/untitled-ontology-113#minversion'",'ng-false-value'=>"")) ?>
                                                                         <?php echo Form::label('minVersion','Minimum version',array('style'=>'color:black')) ?>
                                                                         <br><br>
                                                                         <?php echo Form::checkbox('maxVersion','true',false,array('id'=>'maxVersion','ng-model'=>'maxVersion',
-                                                                            'ng-true-value'=>"'http://www.semanticweb.org/jenny/ontologies/2015/10/untitled-ontology-113#minversion'",'ng-false-value'=>"")) ?>
+                                                                            'ng-true-value'=>"'http://www.semanticweb.org/jenny/ontologies/2015/10/untitled-ontology-113#maxversion'",'ng-false-value'=>"")) ?>
                                                                         <?php echo Form::label('maxVersion','Maximum version',array('style'=>'color:black')) ?>
                                                                     </p>
                                                                 </div>
@@ -279,15 +288,230 @@
             <?php echo Form::close() ?>
 
             <!-- Modal Trigger -->
-            <a class="modal-trigger waves-effect waves-light btn" href="#modal1" onclick=" $('#modal1').openModal();">Modal</a>
+<!--            <a class="modal-trigger waves-effect waves-light btn" href="#modal1" onclick=" $('#modal1').openModal();">Modal</a>-->
 
             <!-- Modal Structure -->
             <div id="modal1" class="modal modal-fixed-footer">
                 <div class="modal-content">
-                    <h4>Modal Header</h4>
-                    <p>{{addElementsLOM() | json}}</p>
-                    <p>{{ResponseSucess}}</p>
-                    <p>{{ResponseDetails}}</p>
+                    <h4 align="center">Match Results</h4>
+<!--                    <p>{{addElementsLOM() | json}}</p>-->
+                    <div class="row" ng-hide="progss">
+                        <div  class="progress">
+                            <div class="indeterminate"></div>
+                        </div>
+                    </div>
+                    <div ng-hide="info" class="row">
+<!--                        <p>{{ResponseSuccess}}</p>-->
+<!--                        <p>{{ResponseDetails}}</p>-->
+<!--                        <p></p>-->
+<!--                        <p>{{ResponseSuccess.lom[0].general.title}}</p>-->
+                        <div class="col s12">
+                            <div class="collection" style="background-color: white;">
+                                <div class="collection-item"><a class="breadcrumb">General</a></div>
+                                <table class="results striped" >
+                                    <tbody>
+                                    <tr>
+                                        <th data-field="id">Title</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].general.title}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th data-field="name">Language</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].general.language}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th data-field="price">Description</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].general.description}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th data-field="price">Keyword</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].general.keyword}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th data-field="price">Coverage</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].general.coverage}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th data-field="price">Structure</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].general.structure}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th data-field="price">Aggregation Level</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].general.aggregationLevel}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="collection-item"><a class="breadcrumb">General</a><a class="breadcrumb">Identifier</a></div>
+                                <table class="results striped">
+                                    <tbody>
+                                    <tr>
+                                        <th data-field="id">Catalog</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].general.identifier.catalog}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th data-field="name">Entry</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].general.identifier.entry}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="col s12">
+                            <div class="collection" style="background-color: white;">
+                                <div class="collection-item"><a class="breadcrumb">Technical</a></div>
+                                <table class="results striped">
+                                    <tbody>
+                                    <tr>
+                                        <th data-field="id">Format</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].technical.format}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th data-field="name">Size</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].technical.size}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th data-field="price">Location</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].technical.location}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th data-field="price">Installation Remarks</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].technical.installationRemarks}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th data-field="price">Other Platform Requirements</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].technical.otherPlatformRequirements}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th data-field="price">Duration</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].technical.duration}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="collection-item"><a class="breadcrumb">Technical</a><a class="breadcrumb">Requirement</a><a class="breadcrumb">OrComposite</a></div>
+                                <table class="results striped">
+                                    <tbody>
+                                    <tr>
+                                        <th data-field="id">Type</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].technical.requirement.orComposite.type}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th data-field="name">Name</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].technical.requirement.orComposite.name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th data-field="name">Minimum version</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].technical.requirement.orComposite.minimumVersion}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th data-field="name">Maximum version</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].technical.requirement.orComposite.maximumVersion}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+
+                        <div class="col s12">
+                            <div class="collection" style="background-color: white;">
+                                <div class="collection-item"><a class="breadcrumb">Educational</a></div>
+                                <table class="results striped">
+                                    <tbody>
+                                    <tr>
+                                        <th data-field="id">Interactivity Type</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].educational.interactivityType}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th data-field="name">Learning Resource Type</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].educational.learningResourceType}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th data-field="price">Interactivity Level</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].educational.interactivityLevel}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th data-field="price">Semantic Density</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].educational.semanticDensity}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th data-field="price">Intended End User Role</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].educational.intendedEndUserRole}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th data-field="price">Context</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].educational.context}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th data-field="price">Typical Age Range</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].educational.typicalAgeRange}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th data-field="price">Difficulty</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].educational.difficulty}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th data-field="price">Typical Learning Time</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].educational.typicalLearningTime}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th data-field="price">Description</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].educational.description}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th data-field="price">Language</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].educational.language}}</td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="col s12">
+                            <div class="collection" style="background-color: white;">
+                                <div class="collection-item"><a class="breadcrumb">Classification</a></div>
+                                <table class="results striped">
+                                    <tbody>
+                                    <tr>
+                                        <th data-field="id">Purpose</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].classification.purpose}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th data-field="name">Description</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].classification.description}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th data-field="price">keyword</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].classification.keyword}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="collection-item"><a class="breadcrumb">Classification</a><a class="breadcrumb">Taxon Path</a></div>
+                                <table class="results striped">
+                                    <tbody>
+                                    <tr>
+                                        <th data-field="id">Source</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].classification.taxonPath.source}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="collection-item"><a class="breadcrumb">Classification</a><a class="breadcrumb">Taxon Path</a><a class="breadcrumb">Taxon</a></div>
+                                <table class="results striped">
+                                    <tbody>
+                                    <tr>
+                                        <th data-field="id">Id</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].classification.taxonPath.taxon.id}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th data-field="id">entry</th>
+                                        <td data-field="id">{{ResponseSuccess.lom[0].classification.taxonPath.taxon.entry}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>

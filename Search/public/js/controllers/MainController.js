@@ -1,5 +1,9 @@
 app.controller('collect',['$scope','$http',function($scope,$http) {
+    $scope.nameMatchOnto = "Test";
+    $scope.externEndpURL = "http://52.33.28.221:8890/sparql";
+    $scope.uriGraph = "http://slor.sourceforge.net/ontology/slor.owl";
     $scope.LOM = "";
+    $scope.MatchLOM="";
     $scope.addElementsLOM = function(){
         $scope.LOM = {
             "nameMatchOnto":$scope.nameMatchOnto,
@@ -65,10 +69,16 @@ app.controller('collect',['$scope','$http',function($scope,$http) {
         ]
         };
 
-        return $scope.LOM;
+       // return $scope.LOM;
     };
 
     $scope.sendElementsChoice = function() {
+        $scope.info = true;
+        $scope.progss = false;
+
+        $scope.addElementsLOM();
+
+        $('#modal1').openModal();
 
         var data = $scope.LOM;
 
@@ -80,7 +90,10 @@ app.controller('collect',['$scope','$http',function($scope,$http) {
 
         $http.post('/requestMatching',data,config)
             .success(function (data, status, headers, config) {
-                $scope.ResponseSucess = data;
+                $scope.progss = true;
+                $scope.info = false;
+                $scope.MatchLOM = data;
+                $scope.ResponseSuccess = data;
             })
             .error(function (data, status, headers, config) {
                 $scope.ResponseDetails = "Data: " + data +
