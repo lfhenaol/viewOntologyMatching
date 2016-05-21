@@ -23,3 +23,11 @@ Route::get('/', function () {
 });
 
 Route::post('/requestMatching','RequestMatching@RequestMatching');
+
+Route::get('/data',function (){
+    return view("ontologyMatchingProcess/data");
+});
+
+Route::get('/matching',function (){
+    return view("ontologyMatchingProcess/matching");
+});

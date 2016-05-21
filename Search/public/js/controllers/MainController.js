@@ -1,9 +1,14 @@
-app.controller('collect',['$scope','$http',function($scope,$http) {
+app.controller('collect',['$scope','$http','$location',function($scope,$http,$location) {
     $scope.nameMatchOnto = "Test";
-    $scope.externEndpURL = "http://52.33.28.221:8890/sparql";
+    $scope.externEndpURL = "http://52.27.133.55:8890/sparql";
     $scope.uriGraph = "http://slor.sourceforge.net/ontology/slor.owl";
     $scope.LOM = "";
     $scope.MatchLOM="";
+
+    $scope.go = function (path) {
+        $location.path(path);
+    }
+
     $scope.addElementsLOM = function(){
         $scope.LOM = {
             "nameMatchOnto":$scope.nameMatchOnto,
@@ -77,9 +82,9 @@ app.controller('collect',['$scope','$http',function($scope,$http) {
         $scope.progss = false;
 
         $scope.addElementsLOM();
-
-        $('#modal1').openModal();
-
+        $(document).ready(function() {
+            $('#modal1').openModal();
+        });
         var data = $scope.LOM;
 
         var config = {
