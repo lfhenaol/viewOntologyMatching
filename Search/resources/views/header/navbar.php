@@ -12,9 +12,13 @@
         </a>
         <ul>
             <li>
-                <a class="btn-floating black tooltipped" data-position="bottom"
-                   data-delay="1" data-tooltip="Repository" href="/repository">
+                <a class="btn-floating black" href="/repository">
                     <i class="material-icons">device_hub</i>
+                </a>
+            </li>
+            <li>
+                <a class="btn-floating black" href="/">
+                    <i class="material-icons">search</i>
                 </a>
             </li>
         </ul>

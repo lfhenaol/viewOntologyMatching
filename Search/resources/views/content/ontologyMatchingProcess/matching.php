@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Ontology Matching</title>
-    <script src="http://localhost:8089/materialize-css/js/materialize.min.js"></script>
+    <?php echo MaterializeCSS::include_js() ?>
     <style>
         table.results.striped th, td {
             padding: 15px 15px;
@@ -492,7 +492,7 @@
         </div>
     </div>
     <div class="modal-footer">
-        <a class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="go('/baseConocimiento')">Next
+        <a class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="go('/matchingConcepts')">Next
             <i class="material-icons right">forward</i></a>
     </div>
 </div>

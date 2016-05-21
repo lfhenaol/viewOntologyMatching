@@ -12,6 +12,10 @@
 */
 
 Route::get('/', function () {
+    return view('content/searchLomByConcept');
+});
+
+Route::get('/repository', function () {
     return view('content/listOntologyMatching');
 });
 
@@ -25,11 +29,12 @@ Route::get('/matching',function (){
     return view("content/ontologyMatchingProcess/matching");
 });
 
-Route::get('/BaseConocimiento',function (){
-    return view('content/ontologyMatchingProcess/BaseConocimiento');
+Route::get('/matchingConcepts',function (){
+    return view('content/ontologyMatchingProcess/matchingConcepts');
 });
 
-Route::get('/repository',function (){
+Route::get('/ontologyMatch',function (){
     return view('content/makeOntologyMatching');
 });
 
+Route::post('/KB','KB@KB');

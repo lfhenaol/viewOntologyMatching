@@ -2,25 +2,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Ontology Matching</title>
-    <script src="http://localhost:8089/materialize-css/js/materialize.min.js">
+    <?php echo MaterializeCSS::include_js() ?>
         <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         table.results.striped th, td {
             padding: 15px 15px;
         }
-
-        .collection{
-            border: 0px !important;
-        }
-
-        .collection .collection-item {
-            background-color: #22A498;
-        }
-
     </style>
     <script>
         $(document).ready(function(){
+
             $('select').material_select();
 
             var fila = 1;
@@ -29,7 +21,7 @@
 
                 fila++;
 
-                var nuevaFila = "<tr class='row'>";
+                var nuevaFila = "<tr id='fila"+fila+"' class='row'>";
 
                 nuevaFila += "<td>";
                 nuevaFila += "<input type='text' name='individual"+fila+"'>";
@@ -56,6 +48,11 @@
                 $("#table").append(nuevaFila);
                 //alert(nuevaFila);
                 $('select').material_select();
+            });
+
+            $(".deleteAgregarFila").click(function(e) {
+                $("#fila"+fila).remove();
+                fila--;
             });
 
 
@@ -113,6 +110,7 @@
                         //return r;
                         //alert(r);
                         alert("SE REGISTRARON LOS INDIVIDUALS CORRECTAMENTE");
+                        $(location).attr('href','/repository');
                     }
                 });
             });
@@ -126,7 +124,7 @@
         <div class="col s12 m4 l2">&nbsp;</div>
         <div class="col s12 m4 l8" ng-app="collectInputData" ng-controller="collect">
             <h3 align="center">Ontology Matching</h3>
-            <table id="table">
+            <table id="table" class="highlight">
                 <thead>
                 <tr>
                     <th data-field="id">Individuals URI or Name</th>
@@ -155,18 +153,31 @@
                 </tr>
                 </tbody>
             </table>
-
-
-    <a class="btn-floating btn-large waves-effect waves-light red inputAgregarFila" type="button" value="agregar fila" data-reactid=".0.0.5" onclick="$('select').material_select();" >
-        <i class="material-icons">add</i>
-    </a>
-
     <br/><br/>
-    <input class="btn inputRegistrar" type="submit" value="registrar flujos de bodega" data-reactid=".0.0.5">
-
+    <input class="btn inputRegistrar" type="button" value="registrar flujos de bodega" data-reactid=".0.0.5">
 </div>
     </div>
-        <div class="col s12 m4 l2">&nbsp;</div>
+        <div class="col s12 m4 l2"><div class="row">
+                <div class="col s12 m9 l10">
+                    <p>&nbsp;</p>
+                </div>
+                <div class="col hide-on-small-only m3 l2">
+                    <div class="fixed-action-btn" style="bottom: 45px;right: 24px;margin-top: -153px;float: left;">
+                        <a class="btn-floating btn-large red">
+                            <i class="large material-icons">mode_edit</i>
+                        </a>
+                        <ul>
+                            <li><a class="btn-floating waves-effect waves-light deleteAgregarFila" >
+                                    <i class="material-icons">clear</i>
+                                </a></li>
+                            <li><a class="btn-floating waves-effect waves-light inputAgregarFila" onclick="$('select').material_select();" >
+                                    <i class="material-icons">add</i>
+                                </a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div></div>
         </div>
     </div>
 </body>

@@ -7,8 +7,8 @@ app.config(function ($routeProvider) {
     })
         .when('/matching', {
             templateUrl: '/matching'
-        }).when('/baseConocimiento', {
-            templateUrl: '/BaseConocimiento'
+        }).when('/matchingConcepts', {
+            templateUrl: '/matchingConcepts'
         })
         .otherwise({
             redirectTo: '/data'
