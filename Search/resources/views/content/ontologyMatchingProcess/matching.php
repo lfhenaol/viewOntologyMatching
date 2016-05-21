@@ -492,7 +492,8 @@
         </div>
     </div>
     <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+        <a class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="go('/baseConocimiento')">Next
+            <i class="material-icons right">forward</i></a>
     </div>
 </div>
         </div>

@@ -12,22 +12,24 @@
 */
 
 Route::get('/', function () {
-    Form::macro('materializeSubmit',function($value){
-        echo
-            '<button class="btn waves-effect waves-light" type="submit" name="action">
-                '.$value.'{{d}}<i class="material-icons right">send</i>
-            </button>';
-    });
-
-    return view('ViewOntologyMatching');
+    return view('content/listOntologyMatching');
 });
 
 Route::post('/requestMatching','RequestMatching@RequestMatching');
 
 Route::get('/data',function (){
-    return view("ontologyMatchingProcess/data");
+    return view("content/ontologyMatchingProcess/data");
 });
 
 Route::get('/matching',function (){
-    return view("ontologyMatchingProcess/matching");
+    return view("content/ontologyMatchingProcess/matching");
 });
+
+Route::get('/BaseConocimiento',function (){
+    return view('content/ontologyMatchingProcess/BaseConocimiento');
+});
+
+Route::get('/repository',function (){
+    return view('content/makeOntologyMatching');
+});
+

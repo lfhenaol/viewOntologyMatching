@@ -8,6 +8,8 @@
     <script src="<?php echo URL::to('/js/shared/angular.js') ?>"></script>
     <script src="<?php echo URL::to('/js/shared/angular-route.min.js') ?>"></script>
     <script src="<?php echo URL::to('/js/shared/angular-animate.min.js') ?>"></script>
+    <script>
+    </script>
     <style>
         table.results.striped th, td {
             padding: 15px 15px;
@@ -34,10 +36,10 @@
             display:block;
             width:100%;
             position:absolute;
-            top:0;
+            top:129px;
             left:0;
             right:0;
-            bottom:0;
+            bottom:0px;
             padding:10px;
         }
 
@@ -59,7 +61,7 @@
 </head>
 <body ng-app="collectInputData" ng-controller="collect">
 
-
+<?php echo view("header/navbar")?>
             <?php echo  Form ::open(array('url' => '#'))  ?>
 
             <div ng-view class="view-animate">
@@ -68,8 +70,6 @@
 
             <!-- Modal Trigger -->
 <!--            <a class="modal-trigger waves-effect waves-light btn" href="#modal1" onclick=" $('#modal1').openModal();">Modal</a>-->
-
-
 
 
 <!-- Modules -->
